@@ -11,8 +11,13 @@ RUN  \
   apt-get update && \
   apt-get install -y oracle-java8-installer \
   --no-install-recommends && \ 
-  rm -rf /var/lib/apt/lists/* && \
-  rm -rf /var/cache/oracle-jdk8-installer
+  apt-get remove -y oracle-java8-installer && \
+  apt-get clean -y && \
+  apt-get autoclean -y && \
+  apt-get autoremove -y && \
+#  rm -rf /var/lib/apt/lists/* && \
+#  rm -rf /var/cache/oracle-jdk8-installer
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 # Define working directory.
 WORKDIR /data
